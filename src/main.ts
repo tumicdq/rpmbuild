@@ -57,6 +57,7 @@ async function run() {
     process.env.GIT_DIR = oldGitDir;
 
     // Installs additional repositories
+    await exec.exec(`dnf config-manager --set-enabled crb`);
     const additionalRepos = core.getInput('additional_repos'); // user input, eg: '["centos-release-scl"]'
 	if (additionalRepos) {
 		const arr = JSON.parse(additionalRepos);
