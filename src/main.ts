@@ -71,9 +71,7 @@ async function run() {
 
     // Execute rpmbuild , -ba generates both RPMS and SPRMS
     try {
-      await exec.exec(
-        `QA_RPATHS=0x0001 rpmbuild -ba ${specFile.destFullPath}`
-      );
+      await exec.exec("bash", ["-c", `QA_RPATHS=0x0001 rpmbuild -ba ${specFile.destFullPath}`]);
     } catch (err) {
       core.setFailed(`action failed with error: ${err}`);
     }
