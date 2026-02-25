@@ -1,12 +1,12 @@
 # Using almalinux:latest as base image for this container
-FROM fedora:latest
+FROM opensuse/tumbleweed
 
 # Copying all contents of rpmbuild repo inside container
 COPY . .
 
 # Installing tools needed for rpmbuild ,
 # depends on BuildRequires field in specfile, (TODO: take as input & install)
-RUN yum install -y rpm-build rpmdevtools gcc make python git nodejs yum-utils
+RUN zypper install -y rpm-build rpmdevtools gcc make python git nodejs
 
 # Install dependecies and build main.js
 RUN npm install --production \
