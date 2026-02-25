@@ -67,7 +67,7 @@ async function run() {
 	}
 
 	// Installs build dependencies
-    await exec.exec(`zypper install -y $(rpmspec -q --buildrequires ${specFile.destFullPath})`);
+    await exec.exec(`zypper install -y $(rpmspec --parse ${specFile.destFullPath} | grep BuildRequires | cut -d' ' -f2 | xargs)`);
 
     // Execute rpmbuild , -ba generates both RPMS and SPRMS
     try {
