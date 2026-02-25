@@ -6,7 +6,7 @@ COPY . .
 
 # Installing tools needed for rpmbuild ,
 # depends on BuildRequires field in specfile, (TODO: take as input & install)
-RUN zypper install -y rpm-build rpmdevtools gcc make python git nodejs
+RUN zypper install -y rpm-build rpmdevtools gcc make python3 git nodejs npm
 
 # Install dependecies and build main.js
 RUN npm install --production \
